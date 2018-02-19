@@ -19,7 +19,8 @@ app.get('/',(req, res)=>{
 });
 
 app.get('/getJson',(req , res)=>{
-    let user = req.param('name');
+    //let user = req.param('test');
+    let user =  req.query.test;
     res.send({
         name:user,
         age:22,
@@ -27,13 +28,24 @@ app.get('/getJson',(req , res)=>{
     })
 });
 
+app.get('/getJson/:param1',(req , res)=>{
+    //let user = req.param('test');
+    let user =  req.params.param1;
+    res.send({
+        name:user,
+        age:22,
+        likes:['sleeping' , 'coding' , 'learning']
+    })
+});
+
+
 app.post('/api/user', function(req, res) {
     let user_id = req.body.user_id;
     let name = req.body.name;
     res.send(user_id + ' From Post' + name);
 });
 
-app.post
+
 app.listen( port, () => {
     console.log("Server Started : " ,port)
 });
